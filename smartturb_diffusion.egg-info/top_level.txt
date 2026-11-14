@@ -1,0 +1,5 @@
+continuous_diffusion
+guided_diffusion
+palette_diffusion
+tfg_diffusion
+turb3d_diffusion
