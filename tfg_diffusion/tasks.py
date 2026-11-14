@@ -78,21 +78,11 @@ def load_guider(task):
     return get_guidance
 
 def wavelet_new(x, level):
-    # 动态获取输入形状[64, 3, 2000]
     batch_size, features, seq_len = x.size()
-    # 小波分解级数对应分组大小
     group_size = 2**level
-    num_groups = seq_len // group_size  # 计算完整分组的数量
-    # 分组并计算均值
+    num_groups = seq_len // group_size  
     x_mean = torch.mean(x.view(batch_size,features, num_groups, group_size), dim=3)
-    # 归一化使能量守恒
     x_mean = x_mean*group_size**(1/2)
-    # x_mean = x_mean * 2 ** (level / 2)
-    # # 填充0保持原始长度
-    # padding_len = seq_len - num_groups  # 需要填充的长度
-    # zeros = torch.zeros(batch_size, features, padding_len, device=x.device)
-    # x_padded = torch.cat([x_mean, zeros], dim=2)
-
     return x_mean
 
 def compute_haar_approx(x, level):
