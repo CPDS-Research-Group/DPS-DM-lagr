@@ -20,7 +20,7 @@ The examples below use trajectories of length **1024** with **3 velocity compone
 The environment recipe in [env_setup.txt](./env_setup.txt) uses Python 3.7 and PyTorch 1.13.1 with CUDA 11.7. The commands below retain these versions and use a consistent Conda environment name. Run them on a Linux machine with a compatible NVIDIA driver and an MPI installation available to `mpi4py` and `mpiexec`.
 
 ```bash
-git clone https://github.com/QinminZheng/DPS-DM-lagr.git
+git clone https://github.com/CPDS-Research-Group/DPS-DM-lagr.git
 cd DPS-DM-lagr
 
 conda create -n TFG-DM-lagr python=3.7 mpi4py -y
@@ -123,7 +123,7 @@ mpiexec -n "$NUM_GPUS" python scripts/turb_train.py \
 
 ## Model Weights
 
-See the repository's [Releases page](https://github.com/QinminZheng/DPS-DM-lagr/releases) for release assets. To use a downloaded model, place a compatible checkpoint in `weights/` and set `--model_path` accordingly. Alternatively, use an EMA checkpoint from your own training run.
+See the repository's [Releases page](https://github.com/CPDS-Research-Group/DPS-DM-lagr/releases) for release assets. To use a downloaded model, place a compatible checkpoint in `weights/` and set `--model_path` accordingly. Alternatively, use an EMA checkpoint from your own training run.
 
 The examples use `weights/ema_0.9999_400000.pt`, matching the checkpoint filename referenced in [sample.sh](./sample.sh). This filename does not itself establish compatibility: check the architecture, sequence length, continuous-noise conditioning, and data normalization associated with the weights.
 
